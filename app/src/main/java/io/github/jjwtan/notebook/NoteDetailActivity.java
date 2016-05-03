@@ -11,6 +11,7 @@ public class NoteDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_detail);
+        createAndAddFragment();
     }
 
     private void createAndAddFragment() {
@@ -22,9 +23,11 @@ public class NoteDetailActivity extends AppCompatActivity {
         //create a new noteviewfragment
         NoteViewFragment noteViewFragment = new NoteViewFragment();
 
+        //setTitle(R.string.viewFragmentTitle);
         //adding the fragment
         fragmentTransaction.add(R.id.note_container, noteViewFragment, "NOTE_VIEW_FRAGMENT");
 
+        //make sure what i did above happens
         fragmentTransaction.commit();
     }
 }

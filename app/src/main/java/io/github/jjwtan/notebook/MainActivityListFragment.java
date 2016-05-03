@@ -42,7 +42,7 @@ public class MainActivityListFragment extends ListFragment {
                             Note.Category.PERSONAL));
         notes.add(new Note("This is a new note title2", "This is the body of our note",
                             Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title3", "This is the body of our note",
+        notes.add(new Note("This is a new note title3 which is very very super super very very LONG long long LOnGG", "This is the body of our note This is the body of our note This is the body of our note This is the body of our note This is the body of our note This is the body of our noteThis is the body of our note",
                             Note.Category.QUOTE));
         notes.add(new Note("This is a new note title4", "This is the body of our note",
                             Note.Category.PERSONAL));
@@ -100,7 +100,7 @@ public class MainActivityListFragment extends ListFragment {
         Intent intent = new Intent(getActivity(),NoteDetailActivity.class);
 
         // pass along the information of the note we clicked on to our noteDetailActivity
-        intent.putExtra(MainActivity.NOTE_CATEGORY_EXTRA, note.getTitle());
+        intent.putExtra(MainActivity.NOTE_TITLE_EXTRA, note.getTitle());
         intent.putExtra(MainActivity.NOTE_MESSAGE_EXTRA, note.getMessage());
         intent.putExtra(MainActivity.NOTE_CATEGORY_EXTRA, note.getCategory());
         intent.putExtra(MainActivity.NOTE_ID_EXTRA, note.getId());
