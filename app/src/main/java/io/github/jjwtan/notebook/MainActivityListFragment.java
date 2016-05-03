@@ -2,6 +2,7 @@ package io.github.jjwtan.notebook;
 
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -86,6 +87,38 @@ public class MainActivityListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
+        launchNoteDetailActivity(position);
+    }
+
+    private void launchNoteDetailActivity(int position) {
+
+        // grab the note information associated with whatever note item we click on
+        Note note = (Note) getListAdapter().getItem(position);
+
+        // create a new intent that launches our noteDetailActivity
+        Intent intent = new Intent(getActivity(),NoteDetailActivity.class);
+
+        // pass along the information of the note we clicked on to our noteDetailActivity
+        intent.putExtra(MainActivity.NOTE_CATEGORY_EXTRA, note.getTitle());
+        intent.putExtra(MainActivity.NOTE_MESSAGE_EXTRA, note.getMessage());
+        intent.putExtra(MainActivity.NOTE_CATEGORY_EXTRA, note.getCategory());
+        intent.putExtra(MainActivity.NOTE_ID_EXTRA, note.getId());
+
+        startActivity(intent);
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
