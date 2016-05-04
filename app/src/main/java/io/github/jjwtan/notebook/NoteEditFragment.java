@@ -46,6 +46,13 @@ public class NoteEditFragment extends Fragment {
         noteCatButton.setImageResource(Note.categoryToDrawable(noteCat));
 
         buildCategoryDialog();
+
+        noteCatButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                categoryDialogObject.show();
+            }
+        });
         return fragmentLayout;
 
     }
