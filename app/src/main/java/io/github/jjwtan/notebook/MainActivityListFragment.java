@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 //import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -103,6 +105,18 @@ public class MainActivityListFragment extends ListFragment {
         menuInflater.inflate(R.menu.long_press_menu, menu);
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        //retrurns to us id of whatever we select
+        switch (item.getItemId()) {
+            //if we press edit
+            case R.id.edit:
+                //do something here
+                Log.d("Menu Clicks", "We pressed edit!");
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
 
     private void launchNoteDetailActivity(int position) {
 
