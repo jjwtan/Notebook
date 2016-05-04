@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 //import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -82,6 +84,8 @@ public class MainActivityListFragment extends ListFragment {
 
         //getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.black));
         //getListView().setDividerHeight(5);
+
+        registerForContextMenu(getListView());
     }
 
     @Override
@@ -90,6 +94,15 @@ public class MainActivityListFragment extends ListFragment {
 
         launchNoteDetailActivity(position);
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.long_press_menu, menu);
+    }
+
 
     private void launchNoteDetailActivity(int position) {
 

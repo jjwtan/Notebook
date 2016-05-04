@@ -23,7 +23,7 @@ public class NoteDetailActivity extends AppCompatActivity {
         //create a new noteviewfragment
         NoteViewFragment noteViewFragment = new NoteViewFragment();
 
-        //setTitle(R.string.viewFragmentTitle);
+        setTitle(R.string.view_fragment_title);
         //adding the fragment
         fragmentTransaction.add(R.id.note_container, noteViewFragment, "NOTE_VIEW_FRAGMENT");
 
