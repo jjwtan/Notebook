@@ -11,10 +11,12 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String NOTE_ID_EXTRA = "io.github.jjwtan.Note Identifier";
-    public static final String NOTE_TITLE_EXTRA = "io.github.jjwtan.Note Title";
-    public static final String NOTE_MESSAGE_EXTRA = "io.github.jjwtan.Note Message";
-    public static final String NOTE_CATEGORY_EXTRA = "io.github.jjwtan.Note Category";
+    public static final String NOTE_ID_EXTRA = "io.github.jjwtan.Identifier";
+    public static final String NOTE_TITLE_EXTRA = "io.github.jjwtan.Title";
+    public static final String NOTE_MESSAGE_EXTRA = "io.github.jjwtan.Message";
+    public static final String NOTE_CATEGORY_EXTRA = "io.github.jjwtan.Category";
+    public static final String NOOE_FRAGMENT_TO_LOAD_EXTRA = "io.github.jjwtan.Fragment_To_Load";
+    public enum FragmentToLaunch{VIEW, EDIT}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
