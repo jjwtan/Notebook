@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Notebook</string>
+
+    <!--Main menu title-->
     <string name="action_settings">Settings</string>
+    <string name="action_add_note">New</string>
 
     <!-- Fragment Title Strings -->
     <string name="view_fragment_title">View Note</string>
     <string name="edit_fragment_title">Edit Note</string>
+    <string name="create_fragment_title">Create Note</string>
 
     <!-- Main List Long Click Context Menu -->
     <string name="edit_menu">Edit</string>

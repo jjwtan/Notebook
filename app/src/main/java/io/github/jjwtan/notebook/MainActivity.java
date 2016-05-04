@@ -1,5 +1,6 @@
 package io.github.jjwtan.notebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOTE_MESSAGE_EXTRA = "io.github.jjwtan.Message";
     public static final String NOTE_CATEGORY_EXTRA = "io.github.jjwtan.Category";
     public static final String NOOE_FRAGMENT_TO_LOAD_EXTRA = "io.github.jjwtan.Fragment_To_Load";
-    public enum FragmentToLaunch{VIEW, EDIT}
+    public enum FragmentToLaunch{VIEW, EDIT, CREATE}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_add_note) {
+            Intent intent = new Intent(this, NoteDetailActivity.class);
+            intent.putExtra(MainActivity.NOOE_FRAGMENT_TO_LOAD_EXTRA, FragmentToLaunch.CREATE);
+            startActivity(intent);
             return true;
         }
 

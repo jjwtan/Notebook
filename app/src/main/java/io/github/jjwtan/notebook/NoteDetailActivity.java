@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 public class NoteDetailActivity extends AppCompatActivity {
 
+    public static final String NEW_NOTE_EXTRA = "New Note";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +19,7 @@ public class NoteDetailActivity extends AppCompatActivity {
 
     private void createAndAddFragment() {
 
-        // grab intent and gradment to launch from out main activity list fragment
+        // grab intent and fragment to launch from out main activity list fragment
         Intent intent = getIntent();
 
         MainActivity.FragmentToLaunch fragmentToLaunch =
@@ -47,6 +49,20 @@ public class NoteDetailActivity extends AppCompatActivity {
                 fragmentTransaction.add(R.id.note_container, noteViewFragment, "NOTE_VIEW_FRAGMENT");
 
                 break;
+            case CREATE:
+                //create a new noteeditfragment
+                NoteEditFragment noteCreateFragment = new NoteEditFragment();
+
+                setTitle(R.string.create_fragment_title);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(NEW_NOTE_EXTRA, true);
+                noteCreateFragment.setArguments(bundle);
+
+                //adding the fragment
+                fragmentTransaction.add(R.id.note_container, noteCreateFragment, "NOTE_CREATE_FRAGMENT");
+
+                break;
+
         }
 
         //make sure what i did above happens

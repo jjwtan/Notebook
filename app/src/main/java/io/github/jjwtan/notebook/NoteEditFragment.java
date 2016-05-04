@@ -24,6 +24,10 @@ public class NoteEditFragment extends Fragment {
     private EditText title, message;
     private Note.Category savedButtonCategory;
     private AlertDialog categoryDialogObject, confirmDialogObject;
+
+    private static final String MODIFIED_CATEGORY = "Modified Category";
+
+    private boolean newNote = false;
     public NoteEditFragment() {
         // Required empty public constructor
     }
@@ -32,6 +36,17 @@ public class NoteEditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // grab the bundle that sends along whether or not our noteEditFragment is creating a new note
+        Bundle bundle = this.getArguments();
+        if (bundle != null) { // we have information in it
+            newNote = bundle.getBoolean(NoteDetailActivity.NEW_NOTE_EXTRA, false);
+        }
+
+        if(savedInstanceState != null) {
+            savedButtonCategory = (Note.Category) savedInstanceState.get(MODIFIED_CATEGORY);
+        }
+
         // inflate our fragment edit layout
         View fragmentLayout = inflater.inflate(R.layout.fragment_note_edit, container, false);
 
@@ -43,12 +58,20 @@ public class NoteEditFragment extends Fragment {
 
         //populate widgets with data
         Intent intent = getActivity().getIntent();
-        title.setText(intent.getExtras().getString(MainActivity.NOTE_TITLE_EXTRA));
-        message.setText(intent.getExtras().getString(MainActivity.NOTE_MESSAGE_EXTRA));
+        title.setText(intent.getExtras().getString(MainActivity.NOTE_TITLE_EXTRA, ""));
+        message.setText(intent.getExtras().getString(MainActivity.NOTE_MESSAGE_EXTRA, ""));
 
-        Note.Category noteCat = (Note.Category) intent.getSerializableExtra(MainActivity.NOTE_CATEGORY_EXTRA);
-        savedButtonCategory =noteCat;
-        noteCatButton.setImageResource(Note.categoryToDrawable(noteCat));
+        // if we grabbed a category from our bundle then
+        // we know we changed orientation and saved information
+        if(savedButtonCategory != null) {
+            noteCatButton.setImageResource(Note.categoryToDrawable(savedButtonCategory));
+
+        // otherwise we came from our list fragment so we just do normally
+        } else if(!newNote) {
+            Note.Category noteCat = (Note.Category) intent.getSerializableExtra(MainActivity.NOTE_CATEGORY_EXTRA);
+            savedButtonCategory = noteCat;
+            noteCatButton.setImageResource(Note.categoryToDrawable(noteCat));
+        }
 
         buildCategoryDialog();
         buildConfirmDialog();
@@ -68,6 +91,12 @@ public class NoteEditFragment extends Fragment {
         });
         return fragmentLayout;
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putSerializable(MODIFIED_CATEGORY, savedButtonCategory);
     }
 
     private void buildCategoryDialog() {
