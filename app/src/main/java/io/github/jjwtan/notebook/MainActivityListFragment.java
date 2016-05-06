@@ -42,44 +42,10 @@ public class MainActivityListFragment extends ListFragment {
         setListAdapter(adapter);
         */
 
-        notes = new ArrayList<Note>();
-        notes.add(new Note("This is a new note title", "This is the body of our note",
-                            Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title2", "This is the body of our note",
-                            Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title3 which is very very super super very very LONG long long LOnGG", "This is the body of our note This is the body of our note This is the body of our note This is the body of our note This is the body of our note This is the body of our noteThis is the body of our note",
-                            Note.Category.QUOTE));
-        notes.add(new Note("This is a new note title4", "This is the body of our note",
-                            Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title5", "This is the body of our note",
-                Note.Category.TECHNICAL));
-        notes.add(new Note("This is a new note title6", "This is the body of our note",
-                            Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title", "This is the body of our note",
-                Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title2", "This is the body of our note",
-                Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title3", "This is the body of our note",
-                Note.Category.QUOTE));
-        notes.add(new Note("This is a new note title4", "This is the body of our note",
-                Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title5", "This is the body of our note",
-                Note.Category.TECHNICAL));
-        notes.add(new Note("This is a new note title6", "This is the body of our note",
-                Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title", "This is the body of our note",
-                Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title2", "This is the body of our note",
-                Note.Category.FINANCE));
-        notes.add(new Note("This is a new note title3", "This is the body of our note",
-                Note.Category.QUOTE));
-        notes.add(new Note("This is a new note title4", "This is the body of our note",
-                Note.Category.PERSONAL));
-        notes.add(new Note("This is a new note title5", "This is the body of our note",
-                Note.Category.TECHNICAL));
-        notes.add(new Note("This is a new note title6", "This is the body of our note",
-                Note.Category.FINANCE));
-
+       NotebookDbAdapter dbAdapter = new NotebookDbAdapter(getActivity().getBaseContext());
+        dbAdapter.open();
+        notes = dbAdapter.getAllNotes();
+        dbAdapter.close();
 
         noteAdapter = new NoteAdapter(getActivity(), notes);
 

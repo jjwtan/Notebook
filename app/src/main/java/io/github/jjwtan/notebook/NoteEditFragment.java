@@ -144,6 +144,17 @@ public class NoteEditFragment extends Fragment {
                 Log.d("Save Note", "Note title: " + title.getText() + "Note message: " +
                         message.getText() + "Note category: " + savedButtonCategory);
 
+                NotebookDbAdapter dbAdapter = new NotebookDbAdapter(getActivity().getBaseContext());
+                dbAdapter.open();
+
+                if (newNote) {
+                    dbAdapter.createNote(title.getText() + "", message.getText() + "",
+                            (savedButtonCategory==null)? Note.Category.PERSONAL:savedButtonCategory);
+
+                } else {
+
+
+                }
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
