@@ -138,7 +138,7 @@ public class NoteEditFragment extends Fragment {
     private void buildConfirmDialog() {
         AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(getActivity());
         confirmBuilder.setTitle("Are you sure?");
-        confirmBuilder.setMessage("Are you sure you sure you want too save the note?");
+        confirmBuilder.setMessage("Are you sure you sure you want to save the note?");
 
         confirmBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
             @Override

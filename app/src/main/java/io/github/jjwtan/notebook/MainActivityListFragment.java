@@ -117,10 +117,10 @@ public class MainActivityListFragment extends ListFragment {
 
         switch (ftl) {
             case VIEW:
-                intent.putExtra(MainActivity.NOOE_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.VIEW);
+                intent.putExtra(MainActivity.NOTE_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.VIEW);
                 break;
             case EDIT:
-                intent.putExtra(MainActivity.NOOE_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.EDIT);
+                intent.putExtra(MainActivity.NOTE_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.EDIT);
                 break;
         }
         startActivity(intent);

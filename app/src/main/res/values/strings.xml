@@ -9,7 +9,8 @@
     <string name="view_fragment_title">View Note</string>
     <string name="edit_fragment_title">Edit Note</string>
     <string name="create_fragment_title">Create Note</string>
-
+    <string name="title_preferences">Application Settings</string>
+    
     <!-- Main List Long Click Context Menu -->
     <string name="edit_menu">Edit</string>
     <string name="delete_menu">Delete</string>

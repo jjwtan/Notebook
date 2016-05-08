@@ -23,7 +23,7 @@ public class NoteDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         MainActivity.FragmentToLaunch fragmentToLaunch =
-                (MainActivity.FragmentToLaunch) intent.getSerializableExtra(MainActivity.NOOE_FRAGMENT_TO_LOAD_EXTRA);
+                (MainActivity.FragmentToLaunch) intent.getSerializableExtra(MainActivity.NOTE_FRAGMENT_TO_LOAD_EXTRA);
 
         //fragment manager manages all our fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
